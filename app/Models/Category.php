@@ -9,5 +9,6 @@ class Category extends Model
 {
     use HasFactory;
 
+    // protected $fillable = ['nama_kategori', 'slug'];
     protected $guarded = ['id'];
 }
