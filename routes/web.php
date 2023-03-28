@@ -48,7 +48,7 @@ Route::get('/blog', [PostController::class, 'index']);
 // ========================================================================
 //HALAMAN SINGLE POST 
 
-Route::get('posts/{post}', [PostController::class, 'show']); 
+Route::get('posts/{post:slug}', [PostController::class, 'show']); 
     //{
         // $blog_post = [
         //     [
