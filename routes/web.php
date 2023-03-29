@@ -5,6 +5,8 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
+use App\Models\Category;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,34 +50,43 @@ Route::get('/blog', [PostController::class, 'index']);
 // ========================================================================
 //HALAMAN SINGLE POST 
 
-Route::get('posts/{post:slug}', [PostController::class, 'show']); 
-    //{
-        // $blog_post = [
-        //     [
-        //         "title" => "Artikel Judul Pertama",
-        //         "slug" => "artikel-judul-pertama",
-        //         "author"   => "Sigit Septiadi",
-        //         "body"  => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eos natus quae vitae optio similique ab dignissimos illo, ipsam pariatur praesentium porro! Neque numquam sed ad, veniam dolorum necessitatibus quia cum, quis labore quo ratione soluta officia excepturi inventore pariatur velit doloribus exercitationem molestiae modi voluptatum dolores repudiandae? Earum hic amet accusantium, ducimus non eaque quae dolorum asperiores provident saepe a quia ad officiis vel at! Quaerat quisquam facere voluptate repellat corrupti aut blanditiis corporis a suscipit maxime at ipsam cupiditate fugiat quo, doloremque quidem natus iure, officia ut numquam aliquid accusantium! Provident voluptates non dignissimos officia saepe beatae recusandae?"
-        //     ],
-        //     [
-        //         "title" => "Artikel Judul Kedua",
-        //         "slug" => "artikel-judul-kedua",
-        //         "author"   => "Iqlima Nur Izzati",
-        //         "body"  => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eos natus quae vitae optio similique ab dignissimos illo, ipsam pariatur praesentium porro! Neque numquam sed ad, veniam dolorum necessitatibus quia cum, quis labore quo ratione soluta officia excepturi inventore pariatur velit doloribus exercitationem molestiae modi voluptatum dolores repudiandae? Earum hic amet accusantium, ducimus non eaque quae dolorum asperiores provident saepe a quia ad officiis vel at! Quaerat quisquam facere voluptate repellat corrupti aut blanditiis corporis a suscipit maxime at ipsam cupiditate fugiat quo, doloremque quidem natus iure, officia ut numquam aliquid accusantium! Provident voluptates non dignissimos officia saepe beatae recusandae?"
-        //     ],
-        // ];
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
+//{
+// $blog_post = [
+//     [
+//         "title" => "Artikel Judul Pertama",
+//         "slug" => "artikel-judul-pertama",
+//         "author"   => "Sigit Septiadi",
+//         "body"  => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eos natus quae vitae optio similique ab dignissimos illo, ipsam pariatur praesentium porro! Neque numquam sed ad, veniam dolorum necessitatibus quia cum, quis labore quo ratione soluta officia excepturi inventore pariatur velit doloribus exercitationem molestiae modi voluptatum dolores repudiandae? Earum hic amet accusantium, ducimus non eaque quae dolorum asperiores provident saepe a quia ad officiis vel at! Quaerat quisquam facere voluptate repellat corrupti aut blanditiis corporis a suscipit maxime at ipsam cupiditate fugiat quo, doloremque quidem natus iure, officia ut numquam aliquid accusantium! Provident voluptates non dignissimos officia saepe beatae recusandae?"
+//     ],
+//     [
+//         "title" => "Artikel Judul Kedua",
+//         "slug" => "artikel-judul-kedua",
+//         "author"   => "Iqlima Nur Izzati",
+//         "body"  => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eos natus quae vitae optio similique ab dignissimos illo, ipsam pariatur praesentium porro! Neque numquam sed ad, veniam dolorum necessitatibus quia cum, quis labore quo ratione soluta officia excepturi inventore pariatur velit doloribus exercitationem molestiae modi voluptatum dolores repudiandae? Earum hic amet accusantium, ducimus non eaque quae dolorum asperiores provident saepe a quia ad officiis vel at! Quaerat quisquam facere voluptate repellat corrupti aut blanditiis corporis a suscipit maxime at ipsam cupiditate fugiat quo, doloremque quidem natus iure, officia ut numquam aliquid accusantium! Provident voluptates non dignissimos officia saepe beatae recusandae?"
+//     ],
+// ];
 
-        // $new_post = [];
-        // foreach ($blog_post as $post) {
-        //     if ($post["slug"] === $slug) {
-        //         $new_post = $post;
-        //     }
-        // }
+// $new_post = [];
+// foreach ($blog_post as $post) {
+//     if ($post["slug"] === $slug) {
+//         $new_post = $post;
+//     }
+// }
 
-        // return view('posts', [
-        //     "title" => "Single Post",
-        //     "post" => Post::find($slug)
+// return view('posts', [
+//     "title" => "Single Post",
+//     "post" => Post::find($slug)
 
 //         // ]);
 //     }
 // // );
+
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'title' => $category->nama_kategori,
+        'post' => $category->posts,
+        'category' => $category->nama_kategori
+    ]);
+});

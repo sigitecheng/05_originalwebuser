@@ -4,7 +4,7 @@
 <article class="my-4">
     <h4><?= $post->title; ?></h4>
 
-    <p>By. Sigit Septiadi in {{ $post->category->nama_kategori }}</p>
+    <p>By. Sigit Septiadi in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->nama_kategori }}</a></p>
 
     {!! $post->body !!}
 </article>
