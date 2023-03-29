@@ -1,7 +1,10 @@
 @extends('layouts.main')
 
 @section('container')
-<article class="my-4">
+
+
+<h3 class="mb-5">Halaman Blog Post Single</h3>
+<article class="">
     <h4><?= $post->title; ?></h4>
 
     <p>By. Sigit Iqlima in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->nama_kategori }}</a></p>
