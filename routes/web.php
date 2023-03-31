@@ -100,9 +100,9 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/authors/{user}', function (User $user) {
-    return view('posts', [
-        'title' => 'User Posts',
-        'posts' => $user->posts
+Route::get('/authors/{author:username}', function (User $author) {
+    return view('authordetails', [
+        'title' => 'User Posts Details',
+        'posts' => $author->posts,
     ]);
 });

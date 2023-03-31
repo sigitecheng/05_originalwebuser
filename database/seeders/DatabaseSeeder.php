@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        User::factory(15)->create();
         // User::create([
         //     'name'  => 'Sigit Septiadi',
         //     'email' => 'sigitseptiadi1@gmail.com',
@@ -56,36 +57,47 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('16115616')
 
         // ]);
-        // User::factory(20)->create();
-
-        // Category::create([
-        //     'nama_kategori'  => 'Web Programming',
-        //     'slug' => 'web-programming'
-
-        // ]);
 
 
-        // Category::create([
-        //     'nama_kategori'  => 'Personal',
-        //     'slug' => 'web-personal'
+        Category::create([
+            'nama_kategori'  => 'Web Programming',
+            'slug' => 'web-programming'
 
-        // ]);
-
-        // Category::create([
-        //     'nama_kategori'  => 'Web Gaming',
-        //     'slug' => 'Pemograman Game'
-
-        // ]);
-
-        // Category::create([
-        //     'nama_kategori'  => 'Internet of Things',
-        //     'slug' => 'internet-of-things'
-
-        // ]);
+        ]);
 
 
+        Category::create([
+            'nama_kategori'  => 'Personal',
+            'slug' => 'web-personal'
 
-        Post::factory(7)->create();
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Web Gaming',
+            'slug' => 'Pemograman Game'
+
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Internet of Things',
+            'slug' => 'internet-of-things'
+
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Kalkulus 1',
+            'slug' => 'kalkulus-1'
+
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'PHP Programming',
+            'slug' => 'php-programming'
+
+        ]);
+
+
+        Post::factory(50)->create();
 
 
         // Post::create([
