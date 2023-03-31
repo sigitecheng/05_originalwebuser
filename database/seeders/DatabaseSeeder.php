@@ -56,36 +56,36 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('16115616')
 
         // ]);
-        User::factory(7)->create();
+        // User::factory(20)->create();
 
-        Category::create([
-            'nama_kategori'  => 'Web Programming',
-            'slug' => 'web-programming'
+        // Category::create([
+        //     'nama_kategori'  => 'Web Programming',
+        //     'slug' => 'web-programming'
 
-        ]);
-
-
-        Category::create([
-            'nama_kategori'  => 'Personal',
-            'slug' => 'web-personal'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'Web Gaming',
-            'slug' => 'Pemograman Game'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'Internet if Things',
-            'slug' => 'internet-of-things'
-
-        ]);
+        // ]);
 
 
+        // Category::create([
+        //     'nama_kategori'  => 'Personal',
+        //     'slug' => 'web-personal'
 
-        Post::factory(15)->create();
+        // ]);
+
+        // Category::create([
+        //     'nama_kategori'  => 'Web Gaming',
+        //     'slug' => 'Pemograman Game'
+
+        // ]);
+
+        // Category::create([
+        //     'nama_kategori'  => 'Internet of Things',
+        //     'slug' => 'internet-of-things'
+
+        // ]);
+
+
+
+        Post::factory(7)->create();
 
 
         // Post::create([

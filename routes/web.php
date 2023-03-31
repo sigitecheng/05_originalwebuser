@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
 use App\Models\Category;
+use App\Models\User;
 
 
 /*
@@ -99,11 +100,9 @@ Route::get('/categories', function () {
     ]);
 });
 
-
 Route::get('/authors/{user}', function (User $user) {
     return view('posts', [
-        'title' => 'User Post',
-        'post' => $category->posts,
-        'category' => $category->nama_kategori
+        'title' => 'User Posts',
+        'posts' => $user->posts
     ]);
 });
