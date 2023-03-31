@@ -98,3 +98,12 @@ Route::get('/categories', function () {
         'categories' => Category::all()
     ]);
 });
+
+
+Route::get('/authors/{user}', function (User $user) {
+    return view('posts', [
+        'title' => 'User Post',
+        'post' => $category->posts,
+        'category' => $category->nama_kategori
+    ]);
+});
