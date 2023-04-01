@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('container')
 
-<h5><a href="/categories" class="text-decoration-none py-4 text-warning">Pilih Berdasarkan Kategori</a></h5>
+<h5><a href="/categories" class="text-decoration-none text-black btn btn-sn btn-warning">Pilih Berdasarkan Kategori</a></h5>
 @foreach ($post as $pos)
-<h1 class="mb-5">Post Category : {{ $category }}</h1>
+<h6 class="mb-5 mt-5">{{ $title  }}</h6>
 
 <article class="my-5 border-bottom pb-5">
     <h3>

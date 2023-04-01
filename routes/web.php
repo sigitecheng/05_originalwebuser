@@ -86,7 +86,7 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('category', [
-        'title' => $category->nama_kategori,
+        'title' => "Post Category By : $category->nama_kategori",
         'post' => $category->posts,
         'category' => $category->nama_kategori
     ]);
@@ -102,7 +102,7 @@ Route::get('/categories', function () {
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view('authordetails', [
-        'title' => 'User Posts Details',
+        'title' => "Author By : $author->name",
         'posts' => $author->posts,
     ]);
 });
