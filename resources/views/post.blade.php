@@ -2,7 +2,6 @@
 @section('container')
 
 <h3 class="mb-5">Halaman Blog Post</h3>
-<h5 class="mb-5"><a href="/categories" class="text-decoration-none text-warning">Pilih Berdasarkan Kategori</a></h5>
 
 @foreach ($post as $pos)
 
