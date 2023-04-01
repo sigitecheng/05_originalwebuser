@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('container')
 
-<h3 class="mb-5">Halaman Blog Post</h3>
+<h3 class="mb-5">{{ $title }}</h3>
 
 @foreach ($post as $pos)
 
