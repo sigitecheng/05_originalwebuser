@@ -15,7 +15,7 @@
                     <a class=" mx-1 nav-link <?= ($title === "About") ? 'active' : ''; ?>" aria-current="page" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" mx-1 nav-link <?= ($title === "Blog") ? 'active' : ''; ?>" aria-current="page" href="/blog">Blog</a>
+                    <a class=" mx-1 nav-link <?= ($title === "Post") ? 'active' : ''; ?>" aria-current="page" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class=" mx-1 nav-link <?= ($title === "info") ? 'active' : ''; ?>" aria-current="page" href="/info">Info</a>

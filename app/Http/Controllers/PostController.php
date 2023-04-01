@@ -12,6 +12,8 @@ class PostController extends Controller
         return view('post', [
             "title"    => "All Post",
             // "post"     => Post::all()
+
+            // MENGGUNAKAN TOOLS EIGER LOADING AGAR OPTIMAL DALAM MANGANTISIPASI QUERY YANG ADA 
             "post" => Post::latest()->get()
         ]);
     }

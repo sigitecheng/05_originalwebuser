@@ -103,6 +103,9 @@ Route::get('/categories', function () {
 Route::get('/authors/{author:username}', function (User $author) {
     return view('authordetails', [
         'title' => "Author By : $author->name",
-        'posts' => $author->posts,
+
+        // N+1 Problem Menggunakan lazy Eiger Loading 
+        'posts' => $author->posts->load('category', 'user')
+
     ]);
 });
