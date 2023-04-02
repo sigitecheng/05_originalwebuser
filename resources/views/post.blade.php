@@ -7,7 +7,7 @@
 @if ($post->count())
 
 <div class="card mb-3">
-    <img src="https://source.unsplash.com/1200x400/?{{ $post[0]->category->name }}" class="card-img-top" alt="{{ $post[0]->category->name }}">
+    <img src="https://source.unsplash.com/1200x400/?{{ $post[0]->category->nama_kategori }}" class="card-img-top" alt="{{ $post[0]->category->nama_kategori }}">
     <div class="card-body text-center">
         <h3 class="card-title"><a href="/posts/{{ $post[0]->slug }}" class="text-decoration-none text-dark">{{$post[0]->title}}</h3></a>
         <p>
@@ -30,16 +30,24 @@
 
 <div class="container">
     <div class="row">
+        @foreach ($post->skip(1) as $pos)
+
         <div class="col-md-4 py-4">
             <div class="card">
-                <img src="" class="card-img-top" alt="">
+                <img src="https://source.unsplash.com/1200x400/?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <p class="card-text">{{ $post->excerpt }}</p>
-                    <a href="/posts/{{ $post->slug }} " class="btn btn-primary">Read More</a>
+                    <h5 class="card-title">{{ $pos->title }}</h5>
+                    <p>
+                        <small> By. <a href="/authors/{{ $pos->user->username }}" class="text-decoration-none">{{ $pos->user->name }}</a>
+                            {{ $pos->created_at->diffForHumans() }}</small>
+                    </p>
+                    <p class="card-text">{{ $pos->excerpt }}</p>
+                    <a href="/posts/{{ $pos->slug }} " class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
+
+        @endforeach
     </div>
 </div>
 
