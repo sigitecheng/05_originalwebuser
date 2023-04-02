@@ -28,13 +28,14 @@
 
 <!-- ===================================   AKHIR HALAMAN DARI POSTINGAN INI ===================================  -->
 
+<!-- ============================== HALAMAN BLOG TENGAH UNTUK PENULIS ======================================== -->
 <div class="container">
     <div class="row">
         @foreach ($post->skip(1) as $pos)
 
-        <div class="col-md-4 py-4">
+        <div class="col-md-4 mb-3">
             <div class="card">
-                <img src="https://source.unsplash.com/1200x400/?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
+                <img src="https://source.unsplash.com/500x400/?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $pos->title }}</h5>
                     <p>
@@ -50,6 +51,8 @@
         @endforeach
     </div>
 </div>
+
+<!-- ============================== ####################################### ======================================== -->
 
 @foreach ($post->skip(1) as $pos)
 
