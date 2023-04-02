@@ -38,6 +38,7 @@
             <div class="card">
                 <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/categories/{{ $pos->category->slug }}" class="text-decoration-none text-white">{{ $pos->category->nama_kategori }}</a></div>
                 <img src="https://source.unsplash.com/500x400?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
+
                 <div class="card-body">
                     <h5 class="card-title">{{ $pos->title }}</h5>
                     <p>
