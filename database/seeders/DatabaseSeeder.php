@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::factory(10)->create();
+        User::factory(7)->create();
         // User::create([
         //     'name'  => 'Sigit Septiadi',
         //     'email' => 'sigitseptiadi1@gmail.com',
@@ -60,44 +60,44 @@ class DatabaseSeeder extends Seeder
 
 
         Category::create([
-            'nama_kategori'  => 'Web Programming',
-            'slug' => 'web-programming'
+            'nama_kategori'  => 'university',
+            'slug' => 'university'
 
         ]);
 
 
         Category::create([
-            'nama_kategori'  => 'Personal',
-            'slug' => 'personal'
+            'nama_kategori'  => 'woman',
+            'slug' => 'woman'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'Game Programming',
-            'slug' => 'game-programming'
+            'nama_kategori'  => 'cat',
+            'slug' => 'cat'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'Internet Of Things',
-            'slug' => 'internet-of-things'
+            'nama_kategori'  => 'mosque',
+            'slug' => 'mosque'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'RFID',
-            'slug' => 'rfid'
+            'nama_kategori'  => 'book',
+            'slug' => 'book'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'PHP Programming',
-            'slug' => 'php-programming'
+            'nama_kategori'  => 'road',
+            'slug' => 'road'
 
         ]);
 
 
-        Post::factory(30)->create();
+        Post::factory(55)->create();
 
 
         // Post::create([

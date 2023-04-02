@@ -11,8 +11,8 @@ class PostController extends Controller
     {
         return view('post', [
             "title"    => "All Post",
+            "active" => 'posts',
             // "post"     => Post::all()
-
             // MENGGUNAKAN TOOLS EIGER LOADING AGAR OPTIMAL DALAM MANGANTISIPASI QUERY YANG ADA 
             "post" => Post::latest()->get()
         ]);
@@ -22,6 +22,7 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "Single Post",
+            "active" => 'posts',
             "post" => $post
 
         ]);

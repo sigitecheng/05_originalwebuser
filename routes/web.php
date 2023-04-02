@@ -22,7 +22,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('Home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => 'home',
     ]);
 });
 
@@ -32,7 +33,8 @@ Route::get('/about', function () {
         "title"     => "About",
         "nama"      => "Sigit Septiadi Prasetyo",
         "email"     => "Sigit@gmail.com",
-        "image"     => "istriku.jpg "
+        "image"     => "istriku.jpg ",
+        "active" => 'about'
     ]);
 });
 
@@ -52,6 +54,7 @@ Route::get('/blog', [PostController::class, 'index']);
 //HALAMAN SINGLE POST 
 
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+
 //{
 // $blog_post = [
 //     [
@@ -85,8 +88,9 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => "Post Category By : $category->nama_kategori",
+    return view('post', [
+        'title' => "Post Category By $category->nama_kategori",
+        "active" => 'categories',
         'post' => $category->posts,
         'category' => $category->nama_kategori
     ]);
@@ -96,6 +100,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
+        "active" => 'categories',
         'categories' => Category::all()
     ]);
 });

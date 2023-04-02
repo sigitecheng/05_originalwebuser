@@ -1,13 +1,14 @@
 @extends('layouts.main')
 @section('container')
 
-<h3 class="mb-5">{{ $title }}</h3>
+<h4 class="mb-5 text-primary">Halaman : {{ $title }}</h4>
 
 <!-- ===================================   MENAMPILKAN CAR PERTAMA PADA POSTINGAN INI  =================================== -->
 @if ($post->count())
 
 <div class="card mb-3">
-    <img src="https://source.unsplash.com/1200x400/?{{ $post[0]->category->nama_kategori }}" class="card-img-top" alt="{{ $post[0]->category->nama_kategori }}">
+    <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/categories/{{ $post[0]->category->slug }}" class="text-decoration-none text-white">{{ $post[0]->category->nama_kategori }}</a></div>
+    <img src="https://source.unsplash.com/1200x400?{{ $post[0]->category->nama_kategori }}" class="card-img-top" alt="{{ $post[0]->category->nama_kategori }}">
     <div class="card-body text-center">
         <h3 class="card-title"><a href="/posts/{{ $post[0]->slug }}" class="text-decoration-none text-dark">{{$post[0]->title}}</h3></a>
         <p>
@@ -33,9 +34,10 @@
     <div class="row">
         @foreach ($post->skip(1) as $pos)
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 py-3">
             <div class="card">
-                <img src="https://source.unsplash.com/500x400/?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
+                <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/categories/{{ $pos->category->slug }}" class="text-decoration-none text-white">{{ $pos->category->nama_kategori }}</a></div>
+                <img src="https://source.unsplash.com/500x400?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $pos->title }}</h5>
                     <p>
@@ -54,6 +56,7 @@
 
 <!-- ============================== ####################################### ======================================== -->
 
+<!-- #############################################
 @foreach ($post->skip(1) as $pos)
 
 <article class="mb-5 border-bottom pb-5">
@@ -65,4 +68,7 @@
     <a href="/posts/{{ $pos->slug }} " class="d-block mt-3">Read More.... </a>
 </article>
 @endforeach
+
+########################################## -->
+
 @endsection
