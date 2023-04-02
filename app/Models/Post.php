@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['title', 'slug', 'excerpt', 'body'];
-    protected $guarded = ['id'];
-    protected $with = ['user', 'category'];
+    // protected $fillable = ['title', 'slug', 'excerpt', 'body']; 
+    protected $guarded = ['id']; // YANG TAAK BOLEH DIISI OLEH USERS, DAN TABLE DI TANDAI DENGAN GUARDED
+    protected $with = ['user', 'category']; // PENAMBAHAN FITUR AGAR OPRIMALISASI QUERY BERJALAN DENGAN BAIK
 
 
     public function category()
