@@ -1,7 +1,19 @@
 @extends('layouts.main')
 @section('container')
 
-<h4 class="mb-5 text-primary">Halaman : {{ $title }}</h4>
+<h4 class="mb-3 text-primary text-center">Halaman : {{ $title }}</h4>
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-6">
+        <form action="/blog">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
+                <button class="btn btn-info" type="submit">Search</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 <!-- ===================================   MENAMPILKAN CAR PERTAMA PADA POSTINGAN INI  =================================== -->
 @if ($post->count())
@@ -21,11 +33,6 @@
 
     </div>
 </div>
-@else
-
-<p class="text-center fs-4">No Post Found Here. </p>
-
-@endif
 
 <!-- ===================================   AKHIR HALAMAN DARI POSTINGAN INI ===================================  -->
 
@@ -51,9 +58,18 @@
             </div>
         </div>
 
+
+
+
         @endforeach
     </div>
 </div>
+
+@else
+
+<p class="text-center fs-4">No Post Found Here. </p>
+
+@endif
 
 <!-- ============================== ####################################### ======================================== -->
 
