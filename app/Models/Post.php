@@ -16,16 +16,29 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         //if (request('search'))
-        if (isset($filters['search']) ? $filters['search'] : false) {
+        // ============================================
+        // if (isset($filters['search']) ? $filters['search'] : false) {
+        //     return $query->where('title', 'like', '%' . request('search') . '%')
+        //         //             ->orWhere('excerpt', 'like', '%' . request('search') . '%')
+        //              ->orWhere('body', 'like', '%' . request('search') . '%');
+        // ============================================
+        //         ->orWhere('excerpt', 'like', '%' . $filters['search'] . '%')
+        //         ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+        // }
+
+
+        // QUERY DENGAN PENGGUNAAN WHEN PADA LARAVEL CARA 1 JIKA QUERY YANG DIBUTUHKAN BERNILAI FALSE 
+        // @query->when($filters['search'] ?? false)
+
+        // QUERY DENGAN PENGGUNAAN WHEN PADA LARAVEL CARA 2 JIKA QUERY YANG DIBUTUHKAN BERNILAI TRUE ADA NILAI NYA  
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('title', 'like', '%' . request('search') . '%')
                 //             ->orWhere('excerpt', 'like', '%' . request('search') . '%')
                 //              ->orWhere('body', 'like', '%' . request('search') . '%');
-                ->orWhere('excerpt', 'like', '%' . $filters['search'] . '%')
-                ->orWhere('body', 'like', '%' . $filters['search'] . '%');
-        }
-
-
-        // QUERY DENGAN PENGGUNAAN WHEN PADA LARAVEL 
+                ->orWhere('excerpt', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search  . '%');
+        });
     }
 
 
