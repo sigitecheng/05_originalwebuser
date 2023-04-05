@@ -67,8 +67,8 @@ class DatabaseSeeder extends Seeder
 
 
         Category::create([
-            'nama_kategori'  => 'woman',
-            'slug' => 'woman'
+            'nama_kategori'  => 'cars',
+            'slug' => 'cars'
 
         ]);
 

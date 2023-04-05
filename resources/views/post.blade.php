@@ -6,6 +6,10 @@
 <div class="row justify-content-center mb-3">
     <div class="col-md-6">
         <form action="/blog">
+            @if (request('category'))
+            <input type="hidden" name="category" value="{{ request('category) }}">
+
+            @endif
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
                 <button class="btn btn-info" type="submit">Search</button>
@@ -24,7 +28,7 @@
     <div class="card-body text-center">
         <h3 class="card-title"><a href="/posts/{{ $post[0]->slug }}" class="text-decoration-none text-dark">{{$post[0]->title}}</h3></a>
         <p>
-            <small> By. <a href="/authors/{{ $post[0]->user->username }}" class="text-decoration-none">{{ $post[0]->user->name }}</a> in <a href="/categories/{{ $post[0]->category->slug }}" class="text-decoration-none">{{ $post[0]->category->nama_kategori }}</a>
+            <small> By. <a href="/authors/{{ $post[0]->user->username }}" class="text-decoration-none">{{ $post[0]->user->name }}</a> in <a href="/blog?category={{ $post[0]->category->slug }}" class="text-decoration-none">{{ $post[0]->category->nama_kategori }}</a>
                 {{ $post[0]->created_at->diffForHumans() }}</small>
         </p>
         <p class="card-text">{{$post[0]->excerpt}}</p>
@@ -43,7 +47,7 @@
 
         <div class="col-md-4 py-3">
             <div class="card">
-                <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/categories/{{ $pos->category->slug }}" class="text-decoration-none text-white">{{ $pos->category->nama_kategori }}</a></div>
+                <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/blog?category={{ $pos->category->slug }}" class="text-decoration-none text-white">{{ $pos->category->nama_kategori }}</a></div>
                 <img src="https://source.unsplash.com/500x400?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
 
                 <div class="card-body">

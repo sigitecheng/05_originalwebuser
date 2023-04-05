@@ -25,7 +25,7 @@ class PostController extends Controller
             // "post"     => Post::all()
             // MENGGUNAKAN TOOLS EIGER LOADING AGAR OPTIMAL DALAM MANGANTISIPASI QUERY YANG ADA 
             // "post" => Post::latest()->get() PAKET 1
-            "post" => Post::latest()->filter(request(['search']))->get()
+            "post" => Post::latest()->filter(request(['search', 'category']))->get()
             //  "post" => $post->get() // PAKET 2
         ]);
     }
