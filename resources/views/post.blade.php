@@ -7,9 +7,15 @@
     <div class="col-md-6">
         <form action="/blog">
             @if (request('category'))
-            <input type="hidden" name="category" value="{{ request('category) }}">
+            <input type="hidden" name="category" value="{{ request('category') }}">
 
             @endif
+
+            @if (request('user'))
+            <input type="hidden" name="user" value="{{ request('user') }}">
+
+            @endif
+
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
                 <button class="btn btn-info" type="submit">Search</button>
@@ -28,7 +34,7 @@
     <div class="card-body text-center">
         <h3 class="card-title"><a href="/posts/{{ $post[0]->slug }}" class="text-decoration-none text-dark">{{$post[0]->title}}</h3></a>
         <p>
-            <small> By. <a href="/authors/{{ $post[0]->user->username }}" class="text-decoration-none">{{ $post[0]->user->name }}</a> in <a href="/blog?category={{ $post[0]->category->slug }}" class="text-decoration-none">{{ $post[0]->category->nama_kategori }}</a>
+            <small> By. <a href="/blog?user={{ $post[0]->user->username }}" class="text-decoration-none">{{ $post[0]->user->name }}</a> in <a href="/blog?category={{ $post[0]->category->slug }}" class="text-decoration-none">{{ $post[0]->category->nama_kategori }}</a>
                 {{ $post[0]->created_at->diffForHumans() }}</small>
         </p>
         <p class="card-text">{{$post[0]->excerpt}}</p>
@@ -53,7 +59,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $pos->title }}</h5>
                     <p>
-                        <small> By. <a href="/authors/{{ $pos->user->username }}" class="text-decoration-none">{{ $pos->user->name }}</a>
+                        <small> By. <a href="/blog?user={{ $pos->user->username }}" class="text-decoration-none">{{ $pos->user->name }}</a>
                             {{ $pos->created_at->diffForHumans() }}</small>
                     </p>
                     <p class="card-text">{{ $pos->excerpt }}</p>
@@ -75,6 +81,11 @@
 
 @endif
 
+
+<!-- ##################### LINK PAGINATIONS ################ -->
+<div class="d-flex justify-content-center">
+    {{ $post->links()}}
+</div>
 <!-- ============================== ####################################### ======================================== -->
 
 <!-- #############################################

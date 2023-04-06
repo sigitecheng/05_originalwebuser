@@ -9,7 +9,7 @@
 
             <h4 class="mb-2"><?= $post->title; ?></h4>
 
-            <p>By. <a href="/authors/{{ $post->user->username }}" class="text-decoration-none">{{ $post->user->name }} </a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->nama_kategori }}</a></p>
+            <p>By. <a href="/authors/{{ $post->user->username }}" class="text-decoration-none">{{ $post->user->name }} </a> in <a href="/blog?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->nama_kategori }}</a></p>
 
             <img src="https://source.unsplash.com/1200x400?{{ $post->category->nama_kategori }}" class="card-img-top" alt="{{ $post->category->nama_kategori }}" class="img-fluid"">
 

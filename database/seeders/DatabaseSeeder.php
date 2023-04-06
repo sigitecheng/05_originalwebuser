@@ -60,39 +60,39 @@ class DatabaseSeeder extends Seeder
 
 
         Category::create([
-            'nama_kategori'  => 'university',
-            'slug' => 'university'
+            'nama_kategori'  => 'anime',
+            'slug' => 'anime'
 
         ]);
 
 
         Category::create([
-            'nama_kategori'  => 'cars',
+            'nama_kategori'  => 'Doraemon',
+            'slug' => 'doreemon'
+
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Cars',
             'slug' => 'cars'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'cat',
-            'slug' => 'cat'
+            'nama_kategori'  => 'Mountain',
+            'slug' => 'mountain'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'mosque',
-            'slug' => 'mosque'
+            'nama_kategori'  => 'Norwegia',
+            'slug' => 'norwegia'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'book',
-            'slug' => 'book'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'road',
-            'slug' => 'road'
+            'nama_kategori'  => 'lamborgini',
+            'slug' => 'lamborgini'
 
         ]);
 

@@ -40,12 +40,24 @@ class Post extends Model
                 ->orWhere('body', 'like', '%' . $search  . '%');
         });
 
-
+        // VERSI LOOPING CALLING BACK 
         $query->when($filters['category'] ?? false, function ($query, $category) {
             return $query->whereHas('category', function ($query) use ($category) {
                 $query->where('slug', $category);
             });
         });
+
+
+        // VERSI LOOPING ARROW FUNCTION
+        $query->when(
+            $filters['user'] ?? false,
+            fn ($query, $user) =>
+            $query->whereHas(
+                'user',
+                fn ($query) =>
+                $query->where('username', $user)
+            )
+        );
     }
 
 

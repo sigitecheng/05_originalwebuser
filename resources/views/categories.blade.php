@@ -10,7 +10,7 @@
 
         @foreach ($categories as $cat)
         <div class="col-md-4 py-4">
-            <a href="/categories/{{ $cat->slug }}">
+            <a href="/blog?category={{ $cat->slug }}">
                 <div class="card text-bg-dark">
                     <img src="https://source.unsplash.com/500x400?{{ $cat->nama_kategori }}" class="card-img" alt="{{ $cat->nama_kategori }}">
                     <div class="card-img-overlay d-flex align-items-center p-0">

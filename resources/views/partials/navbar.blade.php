@@ -21,6 +21,11 @@
                     <a class=" mx-1 nav-link <?= ($active === "categories") ? 'active' : ''; ?>" aria-current="page" href="/categories">Categories</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"></li>
+                <a href="/login" class="nav-link <?= ($active === "login") ? 'active' : ''; ?> text-dark"><i class="bi bi-box-arrow-in-right mr-2 text-dark"></i> Login</a>
+
+            </ul>
         </div>
     </div>
 </nav>
