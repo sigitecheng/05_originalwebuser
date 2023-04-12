@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required disable readonly required>
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}" disable readonly required>
             @error('slug')
             <div class="invalid-feedback mb-2">
                 {{ $message }}
@@ -40,7 +40,12 @@
             <select class="form-select" name="category_id">
 
                 @foreach($categories as $category)
+                @if(old('category_id') == $category->id) <!--  category_id bernilai string dan categgori panah satu bernilai integer == ( 2 sama dengan artinya string ) dan === ( 3 sama dengan artinya adalah integer)  -->
+                <option value="{{ $category->id }}" selected>{{ $category->nama_kategori }}</option>
+                @else
                 <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
+                @endif
+
                 @endforeach
 
             </select>

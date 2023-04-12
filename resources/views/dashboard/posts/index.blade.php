@@ -28,6 +28,14 @@
 <h3 class="mt-2 mb-2">My Posts</h3>
 <div class="table-responsive col-lg-8">
     <a href="/dashboard/posts/create" class="btn btn-sn btn-primary mb-3"><span data-feather="file-plus"></span> Create New Post</a>
+
+    @if(session()->has('create_alert_posts_success'))
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        <strong>{{ session('create_alert_posts_success') }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <table class="table table-striped table-sm">
         <thead>
             <tr>

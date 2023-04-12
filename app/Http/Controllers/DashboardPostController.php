@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Psy\CodeCleaner\ReturnTypePass;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -24,7 +25,7 @@ class DashboardPostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() // UNTUK MELAKUKAN PEMANGGILAN TANGKAP DATA DARI FORM YANG DIKIRIMKAN USERS
     {
         return view('dashboard.posts.create', [
             'categories' => Category::all()
@@ -34,7 +35,7 @@ class DashboardPostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request)  // UNTUK MELAKUKAN CREATE 
     {
         $validateData = $request->validate([
             'title' => 'required|max:255',
@@ -42,6 +43,13 @@ class DashboardPostController extends Controller
             'category_id' => 'required',
             'body' => 'required'
         ]);
+
+        $validateData['user_id'] = auth()->user()->id;
+        $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        Post::create($validateData);
+
+        return redirect('/dashboard/posts')->with('create_alert_posts_success', 'New has been added was successfully !');
     }
 
     /**
