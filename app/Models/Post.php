@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // protected $fillable = ['title', 'slug', 'excerpt', 'body']; 
     protected $guarded = ['id']; // YANG TAAK BOLEH DIISI OLEH USERS, DAN TABLE DI TANDAI DENGAN GUARDED
@@ -69,5 +70,22 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    // PENCARIAN DENGAN TIDAK MENGGUNAKAN ID 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
+
+    // FITUR OTOMATIS UNTUK PEMBUATAN SLUG PADA FORM 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

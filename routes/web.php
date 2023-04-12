@@ -2,6 +2,7 @@
 
 
 // use App\Models\Post;
+
 use App\Models\User;
 use App\Models\Category;
 
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardPostController;
 // use App\Models\Post;
 
 
@@ -118,12 +120,26 @@ Route::get('/authors/{author:username}', function (User $author) {
     ]);
 });
 
-
-Route::get('/login', [LoginController::class, 'index']);
+// MENAMBAHKAN FITUR MIDLEWARE -> PENGGUNAAN GUEST UNTUK HALAMAN YANG BELUM TERAUTENTIKASI ATAU TERDAFTAR
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest'); // PENAMBAHAN FITUR GUEST 
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+//Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware('auth');
+
+
+
+
+// Route::get('/dashboard/posts/checkSLug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::get('dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+
+// ROUTE MENGGUNAKAN METODE RESOURCES UNTUK KEPERLUAN CRUD YANG SUDAH DISEDIAKAN OLEH LARAVEL 
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');

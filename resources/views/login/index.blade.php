@@ -22,11 +22,11 @@
 
 
         <main class="form-signin w-100 m-auto">
-            <form action="/login" method="post">
+            <form target="_blank" action="/login" method="post">
                 @csrf
-                <h1 class="h3 mb-3 fw-normal text-center">{{ $title}}</h1>
+                <h1 class="h3 mb-3 fw-normal text-center">{{ $title }}</h1>
                 <div class="form-floating">
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="email" autofocus required value="{{ old('email')}}">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="email" value="{{ old('email') }}" autofocus required>
                     <label for="email">Email address</label>
                     @error('email')
                     <div class="invalid-feedback mb-2">

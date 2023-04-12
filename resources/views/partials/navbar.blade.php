@@ -21,11 +21,41 @@
                     <a class=" mx-1 nav-link <?= ($active === "categories") ? 'active' : ''; ?>" aria-current="page" href="/categories">Categories</a>
                 </li>
             </ul>
+
+            <!-- ## PENGGUNAAN FITUR MIDLE WARE UNTUK LOGIN UNTUK PENGATURAN PENGHILANGAN LOGIN DAN PEMBUATAN LOGOUT -->
             <ul class="navbar-nav ms-auto">
+
+                @auth
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Welcome back, {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/dashboard"> <i class="bi bi-speedometer"></i> My Dashboard </a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                @else
                 <li class="nav-item"></li>
                 <a href="/login" class="nav-link <?= ($active === "login") ? 'active' : ''; ?> text-dark"><i class="bi bi-box-arrow-in-right mr-2 text-dark"></i> Login</a>
 
+                @endauth
             </ul>
+
+            <!-- ############################# PILIHAN MENU UNTUK USER LOGIN DIATAS ######################## -->
+
         </div>
     </div>
 </nav>
