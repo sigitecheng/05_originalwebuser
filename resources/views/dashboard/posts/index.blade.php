@@ -29,9 +29,9 @@
 <div class="table-responsive col-lg-8">
     <a href="/dashboard/posts/create" class="btn btn-sn btn-primary mb-3"><span data-feather="file-plus"></span> Create New Post</a>
 
-    @if(session()->has('create_alert_posts_success'))
-    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-        <strong>{{ session('create_alert_posts_success') }}</strong>
+    @if(session()->has('success'))
+    <div class="alert alert-secondary alert-dismissible fade show col-lg-12" role="alert">
+        <strong>{{ session('success') }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
@@ -54,8 +54,15 @@
                 <td class="text-center">
                     <!-- HATI HATI DI BAWAH IN IMENGGUNAKAN FITU GETROUTEKEYNAME AGAR TIDAK MENCARI ID BERDASARKAN NO MELAINKAN SESUAI YANG KITA INGINKAN  DENGAN CONTOH TABLE 'SLUG'-->
                     <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-                    <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
-                    <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+
+
+                    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?!')"><span data-feather="trash"></span></button>
+                    </form>
+
                 </td>
 
             </tr>

@@ -30,7 +30,23 @@
 
 <div class="card mb-3">
     <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/categories/{{ $post[0]->category->slug }}" class="text-decoration-none text-white">{{ $post[0]->category->nama_kategori }}</a></div>
+
+
+    @if ($post[0]->image)
+    <div style="max-height: 350px; overflow:hidden">
+
+        <img src="{{ asset('storage/' . $post[0]->image ) }}" class="card-img-top mt-3" alt="{{ $post[0]->category->nama_kategori }}" class="img-fluid">
+
+    </div>
+    @else
     <img src="https://source.unsplash.com/1200x400?{{ $post[0]->category->nama_kategori }}" class="card-img-top" alt="{{ $post[0]->category->nama_kategori }}">
+
+    <!-- <img src="https://source.unsplash.com/1200x400?{{ $post->category->nama_kategori }}" class="card-img-top mt-3" alt="{{ $post->category->nama_kategori }}" class="img-fluid"> -->
+    @endif
+
+
+
+
     <div class="card-body text-center">
         <h3 class="card-title"><a href="/posts/{{ $post[0]->slug }}" class="text-decoration-none text-dark">{{$post[0]->title}}</h3></a>
         <p>
@@ -54,7 +70,14 @@
         <div class="col-md-4 py-3">
             <div class="card">
                 <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)"><a href="/blog?category={{ $pos->category->slug }}" class="text-decoration-none text-white">{{ $pos->category->nama_kategori }}</a></div>
+                @if ($pos->image)
+                <div style="max-height: 350px; overflow:hidden">
+                    <img src="{{ asset('storage/' . $pos->image )}}" alt="{{ $pos->category->nama_kategori }}">
+                </div>
+                @else
                 <img src="https://source.unsplash.com/500x400?{{ $pos->category->nama_kategori }}" class="card-img-top" alt="{{ $pos->category->nama_kategori }}">
+                @endif
+
 
                 <div class="card-body">
                     <h5 class="card-title">{{ $pos->title }}</h5>

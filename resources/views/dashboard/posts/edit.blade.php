@@ -4,17 +4,18 @@
 
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h3>Create New Post </h3>
+    <h3>Edit Form Post </h3>
 </div>
 
 
 
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/posts" enctype="multipart/form-data">
+    <form method="post" action="/dashboard/posts/{{ $post->slug }}">
+        @method('put')
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required value="{{ old('title' )}} " autofocus>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required value="{{ old('title', $post->title )}} " autofocus>
             <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             @error('title')
             <div class="invalid-feedback mb-2">
@@ -25,7 +26,7 @@
 
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}" disable readonly required>
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') , $post->slug }}" required>
             @error('slug')
             <div class="invalid-feedback mb-2">
                 {{ $message }}
@@ -40,7 +41,7 @@
             <select class="form-select" name="category_id">
 
                 @foreach($categories as $category)
-                @if(old('category_id') == $category->id) <!--  category_id bernilai string dan categgori panah satu bernilai integer == ( 2 sama dengan artinya string ) dan === ( 3 sama dengan artinya adalah integer)  -->
+                @if(old('category_id', $post->category_id) == $category->id) <!--  category_id bernilai string dan categgori panah satu bernilai integer == ( 2 sama dengan artinya string ) dan === ( 3 sama dengan artinya adalah integer)  -->
                 <option value="{{ $category->id }}" selected>{{ $category->nama_kategori }}</option>
                 @else
                 <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
@@ -57,31 +58,20 @@
         </div>
 
         <div class="mb-3">
-            <label for="image" class="form-label">Post Image</label>
-            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"> <!-- JANGAN LUPA JIKA INGIN MENAMBAHKAN FILE UPLOAD IMAGE SERTAKAN JUGA DI FORM UNTUK TIPE ENCTYPENYA  -->
-            @error('image')
-            <div class="invalid-feedback mb-2">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-
-        <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <input id="body" type="hidden" name="body" class="@error('body') is-invalid @enderror" required value="{{ old('body') }}">
             @error('body')
             <div class="invalid-feedback mb-2">
                 {{ $message }}
             </div>
             @enderror
-
+            <input id="body" type="hidden" name="body" class="@error('body') is-invalid @enderror" required value="{{ old('body', $post->body) }}">
             <trix-editor input="body"></trix-editor>
 
         </div>
 
 
 
-        <button type="submit" class="btn btn-primary mb-4">Create Post</button>
+        <button type="submit" class="btn btn-primary mb-4">Update Post</button>
     </form>
 </div>
 

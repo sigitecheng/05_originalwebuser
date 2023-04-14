@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        User::create([
+            'name'  => 'Sigit Septiadi',
+            'username' => 'iqlima Nuri',
+            'email' => 'sigitseptiadi1@gmail.com',
+            'password' => bcrypt('adminadmin')
+
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -23,12 +30,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::factory(7)->create();
-        // User::create([
-        //     'name'  => 'Sigit Septiadi',
-        //     'email' => 'sigitseptiadi1@gmail.com',
-        //     'password' => bcrypt('12345')
 
-        // ]);
 
         // User::create([
         //     'name'  => 'Iqlima Nur Izzati',
@@ -60,44 +62,44 @@ class DatabaseSeeder extends Seeder
 
 
         Category::create([
-            'nama_kategori'  => 'anime',
-            'slug' => 'anime'
+            'nama_kategori'  => 'Fortuner',
+            'slug' => 'fortuner'
 
         ]);
 
 
         Category::create([
-            'nama_kategori'  => 'Doraemon',
-            'slug' => 'doreemon'
+            'nama_kategori'  => 'Zoro',
+            'slug' => 'zoro'
 
         ]);
 
         Category::create([
-            'nama_kategori'  => 'Cars',
-            'slug' => 'cars'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'Mountain',
-            'slug' => 'mountain'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'Norwegia',
-            'slug' => 'norwegia'
-
-        ]);
-
-        Category::create([
-            'nama_kategori'  => 'lamborgini',
+            'nama_kategori'  => 'Lamborgini',
             'slug' => 'lamborgini'
 
         ]);
 
+        Category::create([
+            'nama_kategori'  => 'Bandung',
+            'slug' => 'bandung'
 
-        Post::factory(55)->create();
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Jakarta',
+            'slug' => 'jakarta'
+
+        ]);
+
+        Category::create([
+            'nama_kategori'  => 'Pajero',
+            'slug' => 'pajero'
+
+        ]);
+
+
+        Post::factory(125)->create();
 
 
         // Post::create([
