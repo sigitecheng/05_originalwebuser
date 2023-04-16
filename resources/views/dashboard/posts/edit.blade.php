@@ -10,7 +10,8 @@
 
 
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/posts/{{ $post->slug }}">
+    <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-5" enctype="multipart/form-data">
+        <!-- HATI HATI DENGAN PENAMBAHAN ENCTYPE PADA FITUR DI ATAS, JANGAN LUPA UNTUK SELALU MENAMBAHKAN FITUR ENCTYPE AGAR FORM DAPAT MENERIMA FILE  -->
         @method('put')
         @csrf
         <div class="mb-3">
@@ -50,12 +51,36 @@
                 @endforeach
 
             </select>
-            @error('category')
+            <!-- FITUR PEMBERITAHUAN ERROR PADA KATEGORI SELECT   -->
+
+            <!-- @error('category')
+            <div class="invalid-feedback mb-2">
+                {{ $message }}
+            </div>
+            @enderror -->
+
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Post Image</label>
+            <input type="hidden" name="oldImage" value="{{ $post->image }}">
+
+            @if($post->image)
+            <img src="{{ asset('storage/' . $post->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+            @else
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            @endif
+            <!--  DIBAWAH IN ADA PENAMBAHAN FITUR PREVIEW GAMBAR SEBELUM UPLOAD GAMBAR PADA WEBSITE KITA  DENGAN KATA KUNCI ONCHANGE // RAHKAN LANGSUNG KE JAVASCRIPT DI PALING BAWAH -->
+
+            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+            <!-- JANGAN LUPA JIKA INGIN MENAMBAHKAN FILE UPLOAD IMAGE SERTAKAN JUGA DI FORM UNTUK TIPE ENCTYPENYA  -->
+            @error('image')
             <div class="invalid-feedback mb-2">
                 {{ $message }}
             </div>
             @enderror
         </div>
+
 
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
@@ -91,6 +116,20 @@
     document.addEventListener('trix-file-accept', function(e) {
         e.preventDefault();
     })
+
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
 </script>
 
 
