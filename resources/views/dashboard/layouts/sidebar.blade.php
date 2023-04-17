@@ -13,6 +13,17 @@
                     My Post
                 </a>
             </li>
+
+            <!-- 
+
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+                    <span data-feather="codepen" class="align-text-bottom"></span>
+                    Categories
+                </a>
+            </li> -->
+
+
             <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
@@ -38,6 +49,24 @@
                             </a>
                         </li> -->
         </ul>
+
+
+        <!-- ############################### -->
+        <!-- UNTUK MENGHILANGKAN BEBERAPA FITUR, INI DI LAKUKAN AGAR HAK AKSES HANYA DAPAT DI LAKUKAN OLEH YANG NAMANYA ADMIN SAJA  -->
+        @can('admin') <!-- PENGGABUNGAN ANTARA MIDLEWARE DAN GET   -->
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Administrator</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+                    <span data-feather="codepen" class="align-text-bottom"></span>
+                    Post Categories
+                </a>
+            </li>
+        </ul>
+        @endcan
+
 
         <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
                         <span>Saved reports</span>

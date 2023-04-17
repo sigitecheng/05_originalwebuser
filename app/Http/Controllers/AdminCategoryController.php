@@ -12,7 +12,24 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        //
+
+        // HAK AUTORISASI UNTUK ADMIN SAJA YANG BISA MENGAKSES HALAMAN TERSEBUT, UNTUK FITUR MIDDLEWARE KITA BISA MEMBUATNYA SENDIRI DENGAN BANTUAN DARI LARAVEL
+        // if (!auth()->check() || auth()->user()->username !== 'iqlima Nuri') {
+        //     abort(403);
+        // }
+
+        // if (auth()->user()->username !== 'iqlima Nuri') {
+        //     abort(403);
+        // }
+
+
+
+        // # FITUR DI BAWAH UNTUK PENAMBAHAN MENGGUNAKAN METODE GET AND DEFINE SESUAI YANG KITA BUTUHKAN 
+        // $this->authorize('admin');
+
+        return view('dashboard.categories.index', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
