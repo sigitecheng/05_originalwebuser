@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Invoice_pesanan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -63,38 +64,38 @@ class DatabaseSeeder extends Seeder
 
         Category::create([
             'nama_kategori'  => 'Fortuner',
-            'slug' => 'fortuner'
+            'slug' => 'fortuner-'
 
         ]);
 
 
         Category::create([
             'nama_kategori'  => 'Zoro',
-            'slug' => 'zoro'
+            'slug' => 'zoro-'
 
         ]);
 
         Category::create([
             'nama_kategori'  => 'Lamborgini',
-            'slug' => 'lamborgini'
+            'slug' => 'lamborgini--'
 
         ]);
 
         Category::create([
             'nama_kategori'  => 'Bandung',
-            'slug' => 'bandung'
+            'slug' => 'bandung-'
 
         ]);
 
         Category::create([
             'nama_kategori'  => 'Jakarta',
-            'slug' => 'jakarta'
+            'slug' => 'jakarta-'
 
         ]);
 
         Category::create([
             'nama_kategori'  => 'Pajero',
-            'slug' => 'pajero'
+            'slug' => 'pajero-'
 
         ]);
 
@@ -150,5 +151,9 @@ class DatabaseSeeder extends Seeder
         //     'category_id' => 1,
         //     'user_id' => 6
         // ]);
+
+        // JenisBarang::factory(1)->create();
+        // Barangbarang::factory(125)->create();
+        Invoice_pesanan::factory(45)->create();
     }
 }

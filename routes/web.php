@@ -13,6 +13,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminDashboardInvoicePesananController;
+use App\Http\Controllers\AdminItemBarangdanHargaController;
+use App\Http\Controllers\BarangbarangController;
+use App\Http\Controllers\UserTabelBarangbarangController;
+use App\Models\UserTabelBarangbarang;
+use GuzzleHttp\Middleware;
+
 // use App\Models\Post;
 
 
@@ -149,3 +156,30 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 
 // ROUTE UNTUK MENAMBAHKAN KATEGORI YANG ADA SESUAI DENGAN KEBUTUHAN ADMINISTRASI WEB 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+
+
+// =================================================================================================================== 
+Route::resource('/admin_itembarangdanharga/all_category', AdminItemBarangdanHargaController::class);
+
+//ROUTE MENUJU ADMIN_DASHBOARDINVOCEPESANAN 
+Route::resource('/admin_dashboardinvoicepesanan/all_invoicepesanan', AdminDashboardInvoicePesananController::class)->middleware('admin');
+
+//ROUTE MENUJU ADMIN_DASHBOARDINVOCEPESANAN 
+// Route::resource('/admin_dashboardinvoicepesanan/all_invoice', AdminDashboardInvoicePesananController::class, 'history')->middleware('admin');
+
+//ROUTE UNTUK PROGRESS INVOICE PENJUALAN 
+Route::resource('/admin_dashboardinvoicepesananprogress/all-data', ProgressController::class)->middleware('auth');
+
+
+
+//ROUTE UNTUK HISTORY PESANAN
+// /admin_dashboardinvoicepesanan/historyinvoicepesanan
+
+//Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/admin_dashboardinvoicepesanan/historyinvoicepesanan', function () {
+//     return view('dashboard.index');
+// })->middleware('auth');
+
+
+// ROUTE INVOICE PESANAN PROGRESS
+Route::get('/admin_dashboardinvoicepesanan/progress', [InvoicepesananProgressController::class, 'index'])->middleware('auth');

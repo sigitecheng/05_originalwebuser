@@ -63,6 +63,7 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Post Image</label>
+            <!-- PENGKONDISIAN OLD IMAGE UNTUK MEMBAWA KE USERS SETELAH ITU BARU DIGANTI DAN YANG LAMA BISA DI HAPUSKAN  -->
             <input type="hidden" name="oldImage" value="{{ $post->image }}">
 
             @if($post->image)

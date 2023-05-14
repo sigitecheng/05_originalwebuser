@@ -9,6 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+
                     <a class=" mx-1 nav-link <?= ($active === "home") ? 'active' : ''; ?>" aria-current="page" href="/"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item">

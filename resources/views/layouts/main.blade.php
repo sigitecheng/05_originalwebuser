@@ -16,7 +16,7 @@
     <!-- MY STYLE -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>PJA X EMAKI | {{ $title; }}</title>
+    <title>Sigimatika | {{ $title  }}</title>
 </head>
 
 <body>
